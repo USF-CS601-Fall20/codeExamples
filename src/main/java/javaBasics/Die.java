@@ -15,6 +15,11 @@ public class Die {
         faceValue = 1;
     }
 
+    public Die(Die other) {
+        this.faceValue = other.faceValue;
+        System.out.println("copy");
+    }
+
     /**
      * Rolls the die and sets the face value.
      */

@@ -11,15 +11,15 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student otherStudent) {
-        if (this.id < otherStudent.id)
+        /*if (this.id < otherStudent.id)
             return -1;
         else if (this.id == otherStudent.id){
             return 0;        }
         else
             return 1;
+        */
 
-
-        //  return name.compareTo(otherStudent.name);
+        return name.compareTo(otherStudent.name);
     }
 
     @Override

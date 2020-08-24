@@ -28,7 +28,6 @@ public class Game {
     public void play() {
         // Play some game where we need to roll dice
         // Not important for the point I am trying to make so left blank
-
     }
 
     /**
@@ -53,13 +52,19 @@ public class Game {
         return Collections.unmodifiableList(dice);
     }
 
+    public void setDice(List<Die> dice) {
+        this.dice = new ArrayList<>();
+        for (int i = 0; i < dice.size(); i++) {
+            Die copyDie = new Die(dice.get(i));
+            this.dice.add((copyDie));
+        }
+    }
+
     // The methods below break encapsulation!! Do NOT do it. Points taken off for this.
     /*
     public List<Die> getDice() {
         return this.dice;
     }
-
-    // The methods below break encapsulation!! Do NOT do it. Points taken off f
     public void setDice(List<Die> dice) { // How can we implement it instead?
         this.dice = dice;
     }
