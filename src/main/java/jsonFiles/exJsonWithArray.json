@@ -1,0 +1,22 @@
+{
+  "fruits": [
+    {
+      "name": "peach",
+      "color": "red",
+      "price": 5,
+      "organic": true
+    },
+    {
+      "name": "apple",
+      "color": "green",
+      "price": 2,
+      "organic": true
+    },
+    {
+      "name": "lemon",
+      "color": "yellow",
+      "price": 1.5,
+      "organic": false
+    }
+  ]
+}

@@ -11,11 +11,6 @@ public class GameCharacter implements Speak {
         System.out.println(greeting + ". Thanks for listening!");
     }
 
-    @Override
-    public void shout() {
-        System.out.println("AAAA");
-
-    }
 
 
 

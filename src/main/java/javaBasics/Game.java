@@ -55,10 +55,13 @@ public class Game {
     public void setDice(List<Die> dice) {
         this.dice = new ArrayList<>();
         for (int i = 0; i < dice.size(); i++) {
-            Die copyDie = new Die(dice.get(i));
+            Die anotherDie = dice.get(i);
+            Die copyDie = new Die(anotherDie);
             this.dice.add((copyDie));
         }
     }
+
+
 
     // The methods below break encapsulation!! Do NOT do it. Points taken off for this.
     /*

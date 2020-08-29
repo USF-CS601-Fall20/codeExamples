@@ -15,6 +15,10 @@ public class Die {
         faceValue = 1;
     }
 
+    public Die(int faceValue) {
+        this.faceValue = faceValue;
+    }
+
     public Die(Die other) {
         this.faceValue = other.faceValue;
         System.out.println("copy");
@@ -52,6 +56,8 @@ public class Die {
      * toString
      * @return a string representation of this die
      */
+
+    @Override
     public String toString() {
         return "Face Value: " + faceValue;
     }

@@ -7,5 +7,12 @@ public class Talking {
         c.say("Hello");
         c.shout();
 
+        /*Speaker speaker = new Philosopher();
+        speaker.speak();
+        ((Philosopher) speaker).pontificate();
+        speaker = new Dog();
+        speaker.speak();
+        */
+
     }
 }

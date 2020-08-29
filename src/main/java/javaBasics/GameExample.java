@@ -7,16 +7,17 @@ import java.util.List;
 public class GameExample {
     public static void main(String[] args) {
 
+
         Game game = new Game(3);
         List<Die> gameDice = game.getDice();
         System.out.println("Before: " + game);
-        gameDice.clear(); // will not be allowed; will throw an exception
+        //gameDice.clear(); // will not be allowed; will throw an exception
         // since the "good" getter returns unmodifiable read-only view of the list
         // If you change getDice to the "bad" one that breaks encapsulation, you can see what will happen
-        System.out.println("After: " + game);
+        //System.out.println("After: " + game);
 
         // Set dice example
-       /* List<Die> newArr = new ArrayList<>();
+        List<Die> newArr = new ArrayList<>();
         Die die1 = new Die();
         die1.roll();
         Die die2 = new Die();
@@ -27,7 +28,6 @@ public class GameExample {
         game.setDice(newArr);
         newArr.clear();
         System.out.println("After:" + System.lineSeparator() +  "Game = " + game);
-        */
 
     }
 }
