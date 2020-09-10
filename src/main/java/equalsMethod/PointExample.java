@@ -10,14 +10,17 @@ public class PointExample {
         // Version 1: Breaks Symmetry
         Point p1 = new Point(100, 200);
         ColorPointV1 p2 = new ColorPointV1(100, 200, new Color(200, 0, 100));
-        System.out.println("Version 1 --------");
-        System.out.println(p1.equals(p2));
-        System.out.println(p2.equals(p1));
+        //System.out.println(p2 instanceof  ColorPointV1);
+        //System.out.println(p2 instanceof  Point);
+        // System.out.println(p2.getClass().getSimpleName());
 
 
+        //System.out.println("Version 1 --------");
+        //System.out.println(p1.equals(p2)); // true
+        //System.out.println(p2.equals(p1)); // false
 
         //Version 2: does not break symmetry, but breaks transitivity
-       /* ColorPointV2 p1U = new ColorPointV2(100, 200, new Color(200, 0, 100));
+        /*ColorPointV2 p1U = new ColorPointV2(100, 200, new Color(200, 0, 100));
         Point p2U = new Point(100, 200);
         ColorPointV2 p3U = new ColorPointV2(100, 200, new Color(0, 0, 0));
         System.out.println(" Version 2 -----------");
@@ -29,9 +32,9 @@ public class PointExample {
         */
 
         // Version 3: preserves transitivity, but has logical issues: Point does not
-        // behave as a point
+        // behave as a point; breaks Liskov principle
         /*ColorPointV3 p1Version3 = new ColorPointV3(100, 200, new Color(200, 0, 100));
-        Point p2Version3 = new Point(100, 200);
+        PointV3 p2Version3 = new PointV3(100, 200);
         ColorPointV3 p3Version3 = new ColorPointV3(100, 200, new Color(0, 0, 0));
         System.out.println(" Version 3 -----------");
         System.out.println(p1Version3.equals(p2Version3));
@@ -40,11 +43,10 @@ public class PointExample {
         System.out.println(p1Version3.equals(p3Version3));
         */
 
-
         // Version 4
         // Preserves symmetry, transitivity and Liskov principle (since ColorPointComposition is not
         // a subclass of Point in this version, so we don't allow them to be compared and that's okay
-        /*ColorPointComposition p1Version4 = new ColorPointComposition(100, 200, new Color(200, 0, 100));
+        ColorPointComposition p1Version4 = new ColorPointComposition(100, 200, new Color(200, 0, 100));
         Point p2Version4 = new Point(100, 200);
         ColorPointComposition p3Version4 = new ColorPointComposition(100, 200, new Color(0, 0, 0));
         System.out.println(" Version 4 -----------");
@@ -52,7 +54,7 @@ public class PointExample {
         System.out.println(p2Version4.equals(p1Version4));
         System.out.println(p2Version4.equals(p3Version4));
         System.out.println(p1Version4.equals(p3Version4));
-        */
+
 
         /*ColorPointV2 x = new ColorPointV2(100, 200, new Color(200, 0, 100));
         ColorPointV1 y = new ColorPointV1(100, 200, new Color(0, 0, 0));

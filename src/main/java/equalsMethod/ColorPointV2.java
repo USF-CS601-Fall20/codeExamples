@@ -19,7 +19,7 @@ public class ColorPointV2 extends Point {
 
     @Override
     public boolean equals(Object other) {
-        System.out.println("Equals of ColorPointV2");
+        // System.out.println("Equals of ColorPointV2");
         if (this == other)
             return true;
         if (! (other instanceof Point)) // not a Point and not an object of a subclass of Point
@@ -28,6 +28,6 @@ public class ColorPointV2 extends Point {
             return super.equals(other) && ((ColorPointV2)other).color.equals(color);
 
         // other is Point, but not ColorPoint
-        return other.equals(this); //((Point)other).equals(this);
+        return super.equals(other); // we can also call other.equals(this) - same thing, Point's equals method
     }
 }

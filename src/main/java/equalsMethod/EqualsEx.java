@@ -6,6 +6,7 @@ public class EqualsEx {
 
         CaseInsensitiveString string1 = new CaseInsensitiveString("Hello");
         String string2 = new String("hello"); // We do not need to use the new operator here; I left it so that it serves as a reminder that this variable is of type String
+
         System.out.println(string1.equals(string2)); // true
         System.out.println(string2.equals(string1)); // false
         // This breaks the equals contract! Should be symmetric, but it's not.

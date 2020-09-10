@@ -1,10 +1,10 @@
 package equalsMethod;
 
-/** Demonstrates issues with transitivity when we try to override ColorPoint's equals method.
+/** Breaks Liskov principle.
  * From "Effective Java" by Joshua Bloch. */
-public class Point {
+public class PointV3 {
     private int x, y;
-    public Point(int x, int y) {
+    public PointV3(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -19,9 +19,9 @@ public class Point {
         //System.out.println("Equals of Point");
         if (this == other)
             return true;
-        if (! (other instanceof Point))
+        if (this.getClass() != other.getClass())
             return false;
-        Point otherPoint = (Point)other;
+        PointV3 otherPoint = (PointV3)other;
         if ((x == otherPoint.x) && (y == otherPoint.y))
             return true;
         return false;

@@ -16,7 +16,7 @@ public class HashCodeExample {
 
         System.out.println(pointsSet.contains(p1)); // true
         System.out.println(pointsSet.contains(p2)); // false
-        System.out.println(p1.equals(p2)); // true (since Point overrides equal to compaer x and y)
+        System.out.println(p1.equals(p2)); // true (since Point overrides equal to compare x and y)
         System.out.println(p1.hashCode() + " " + p2.hashCode());
 
 

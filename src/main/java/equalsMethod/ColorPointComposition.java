@@ -11,7 +11,7 @@ public class ColorPointComposition {
         color = col;
     }
 
-    public Point asPoint() {
+    private Point asPoint() {
         return point;
     }
 

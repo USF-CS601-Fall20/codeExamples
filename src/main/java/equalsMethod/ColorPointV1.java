@@ -6,6 +6,7 @@ import java.awt.*;
  * From "Effective Java" by Joshua Bloch. */
 public class ColorPointV1 extends Point {
     private Color color;
+
     public ColorPointV1(int x, int y, Color color) {
         super(x, y);
         this.color = color;
@@ -18,7 +19,7 @@ public class ColorPointV1 extends Point {
 
     @Override
     public boolean equals(Object other) {
-        System.out.println("Equals of ColorPointV1");
+        //System.out.println("Equals of ColorPointV1");
         if (this == other)
             return true;
         if (! (other instanceof ColorPointV1))
