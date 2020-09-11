@@ -17,9 +17,9 @@ public class JsonProcessing {
     public static void main(String[] args) {
         JsonProcessing jp = new JsonProcessing();
 
-        //jp.parseSimple("src/main/java/jsonFiles/exJsonSimple.json");
-        //jp.parsePersonInfo("src/main/java/jsonFiles/exJsonPersonInfo.json");
-        jp.parsePeople("src/main/java/jsonFiles/exJsonPeople.json");
+        jp.parseSimple("src/main/java/jsonFiles/exJsonSimple.json");
+         // jp.parsePersonInfo("src/main/java/jsonFiles/exJsonPersonInfo.json");
+        //jp.parsePeople("src/main/java/jsonFiles/exJsonPeople.json");
         //jp.parseJSONObjectWithArray("src/main/java/jsonFiles/exJsonWithArray.json");
     }
 
@@ -54,7 +54,7 @@ public class JsonProcessing {
             Person p = gson.fromJson(br, Person.class);
             System.out.println(p);
 
-            String jsonInString = gson.toJson(p); // deserializing
+            String jsonInString = gson.toJson(p);
             System.out.println(jsonInString);
         }
         catch(IOException e) {
@@ -80,11 +80,11 @@ public class JsonProcessing {
             String fileData = new String(Files.readAllBytes(Paths.get(filePath)));
             JsonParser parser = new JsonParser();
             JsonObject jo = (JsonObject)parser.parse(fileData);
+
             JsonArray jsonArr = jo.getAsJsonArray("people");
             // The commented code is if we want to use an ArrayList instead of array of Person-s
             //Type peopleType = new TypeToken<ArrayList<Person>>(){}.getType();
             //ArrayList<Person> people = gson.fromJson(jsonArr, peopleType);
-
             Person[] people = gson.fromJson(jsonArr, Person[].class);
             for (Person p: people) {
                 System.out.println(p);

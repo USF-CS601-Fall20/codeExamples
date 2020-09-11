@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName;
 public class Fruit {
     private String name;
     private String color;
-    private double price;
+
+    //private double price;
 
     @SerializedName(value = "organic")
     private boolean isOrganic; // if we want to have a name of the field that is
@@ -22,7 +23,7 @@ public class Fruit {
     public Fruit(String name, String color, double price, boolean isOrganic) {
         this.name = name;
         this.color = color;
-        this.price = price;
+        //this.price = price;
         this.isOrganic = isOrganic;
     }
 
@@ -35,7 +36,7 @@ public class Fruit {
         return "Fruit{" +
                 "name='" + name + '\'' +
                 ", color='" + color + '\'' +
-                ", price=" + price +
+                //", price=" + price +
                 ", organic=" + isOrganic +
                 '}';
     }
@@ -49,9 +50,10 @@ public class Fruit {
         return color;
     }
 
-    public double getPrice() {
+    /*public double getPrice() {
         return price;
     }
+     */
 
     public boolean isOrganic() {
         return isOrganic;
