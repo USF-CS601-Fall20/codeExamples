@@ -1,6 +1,6 @@
 package inheritance;
 
-// Subclass of class Vehicle
+/** Subclass of class Vehicle */
 public class Truck extends Vehicle {
     private boolean isPickup;
 

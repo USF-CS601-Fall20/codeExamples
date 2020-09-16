@@ -21,5 +21,8 @@ public class Creature {
 	public void speak() {
 		System.out.println("Creature says: " + greeting);
 	}
-	
+
+	private void func() {
+		System.out.println("private");
+	}
 }

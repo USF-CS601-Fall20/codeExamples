@@ -12,6 +12,7 @@ public class HashCodeExample {
         Point p1 = new Point(50, 25);
         pointsSet.add(p1);
         pointsSet.add(new Point(1, 0));
+
         Point p2 = new Point(50, 25);
 
         System.out.println(pointsSet.contains(p1)); // true

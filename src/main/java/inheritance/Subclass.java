@@ -15,6 +15,5 @@ public class Subclass  extends Superclass {
       */
     public static void staticFunc1() {
         System.out.println("staticFunc1, subclass version");
-        //Superclass.staticFunc1();
     }
 }

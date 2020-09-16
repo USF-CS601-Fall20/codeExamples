@@ -81,7 +81,10 @@ public class JsonProcessing {
             JsonParser parser = new JsonParser();
             JsonObject jo = (JsonObject)parser.parse(fileData);
 
+
             JsonArray jsonArr = jo.getAsJsonArray("people");
+
+
             // The commented code is if we want to use an ArrayList instead of array of Person-s
             //Type peopleType = new TypeToken<ArrayList<Person>>(){}.getType();
             //ArrayList<Person> people = gson.fromJson(jsonArr, peopleType);

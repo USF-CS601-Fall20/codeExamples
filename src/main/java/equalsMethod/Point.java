@@ -28,10 +28,11 @@ public class Point {
     }
 
     // We must also override hashCode! We should do it whenever we override equals
-   /* @Override
+    @Override
     public int hashCode() {
         return 31*((Integer)x).hashCode() + ((Integer)y).hashCode();
-    }*/
+
+    }
 
     public int getX() {
         return x;

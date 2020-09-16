@@ -13,18 +13,24 @@ public class DirectoryStreamExample {
      * @param directory directory where the method searches for files
      */
     public static void processFiles(String directory) {
+
         Path p = Paths.get(directory);
         try (DirectoryStream<Path> filesList = Files.newDirectoryStream(p)) {
             for (Path file : filesList) {
                 // print the name of each file in the directory
                 if (!Files.isDirectory(file))
                     System.out.println(file);
+
             }
         } catch (IOException e) {
             System.out.println("Can not open directory: " + directory);
         }
     }
 
+    /**
+     * The main function
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
        DirectoryStreamExample.processFiles("src/main/java/javaBasics");
 

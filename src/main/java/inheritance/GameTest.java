@@ -39,9 +39,9 @@ public class GameTest {
 								// depending on what object the creature is
 								// referencing
 			// If the creature is an alien, call the fight() method
-			if (creature instanceof Alien) {
-				((Alien) creature).fight();
-			}
+			//if (creature instanceof Alien) {
+			//	((Alien) creature).fight();
+			//}
 		}
 	
 	}

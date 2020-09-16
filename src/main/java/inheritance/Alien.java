@@ -22,6 +22,7 @@ public class Alien extends Creature {
 	@Override
 	public void speak() {
 		System.out.println("Alien from planet " + planet + " says: " + getGreeting() + ". ");
+
 	}
 
 	public void fight() {
