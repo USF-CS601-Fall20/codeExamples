@@ -9,6 +9,7 @@ public class MySpellChecker implements SpellChecker {
     private Dictionary dictionary;
 
     public MySpellChecker(Dictionary dictionary) {
+
         this.dictionary = dictionary;
     }
 

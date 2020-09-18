@@ -1,5 +1,7 @@
 package interfaces;
 
+import inheritance.Creature;
+
 /** A simple interface with a default method  */
 interface Speak {
 
@@ -8,7 +10,5 @@ interface Speak {
    default void shout() {
        System.out.println("Let's fight!");
    }
-
-  
 
 }

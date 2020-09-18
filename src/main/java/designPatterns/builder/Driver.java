@@ -9,11 +9,11 @@ public class Driver {
         //NutritionFacts facts = new NutritionFacts(3, 10, 100, 0, 0, 50);
         //System.out.println(facts);
 
-        NutritionFactsWithBuilder facts  = new NutritionFactsWithBuilder.Builder(2, 10)
+       /* NutritionFactsWithBuilder facts  = new NutritionFactsWithBuilder.Builder(2, 10)
                 .setSodium(10)
                 .setCarbohydrate(100)
-                .build();
+                .build();*/
 
-
+        USFStudent student = new USFStudent.Builder(1, "Alice").setCourses(4).build();
     }
 }
