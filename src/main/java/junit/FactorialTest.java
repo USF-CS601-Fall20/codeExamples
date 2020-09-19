@@ -25,7 +25,7 @@ public class FactorialTest {
         assertEquals(expectedFactorialResult, Factorial.compute(inputN));
     }
 
-    @Parameters(name = "factorial({0}) -> {1}")
+    @Parameters(name = "factorial({0}) =  {1}")
     public static Iterable<Object[]> loadTestData() {
 
         List<Object[]> inputExpectedList = new ArrayList<>();

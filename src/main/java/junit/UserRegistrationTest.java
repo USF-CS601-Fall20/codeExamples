@@ -13,7 +13,7 @@ import org.junit.Test;
 // JUnit tests
 public class UserRegistrationTest {
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void validateUsernameNull() {
 		UserRegistration.validateUsername(null);
 	}
@@ -25,7 +25,7 @@ public class UserRegistrationTest {
 	
 	@Test
 	public void validateUsernameTooLong() {
-		assertFalse(UserRegistration.validateUsername("iChoseTheLongestUsernameICouldThinkOf"));
+		assertFalse(UserRegistration.validateUsername("iChose9_TheLongestUsernameICouldThinkOf"));
 	}
 
 	@Test

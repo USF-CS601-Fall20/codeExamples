@@ -33,7 +33,7 @@ public class UserRegistration {
 		// 3) Contains an underscore and a digit
 		if (username == null) {
 			System.out.println("username is null");
-			throw new NullPointerException();
+			throw new IllegalArgumentException();
 		}
 		if (username.isEmpty())
 			return false;
