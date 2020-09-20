@@ -10,17 +10,38 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /** The example demonstrates reading from a JSON file */
 public class JsonProcessing {
     public static void main(String[] args) {
         JsonProcessing jp = new JsonProcessing();
-
-        jp.parseSimple("src/main/java/jsonFiles/exJsonSimple.json");
+        jp.jsonParserExample("src/main/java/jsonFiles/people.json");
+        // jp.parseSimple("src/main/java/jsonFiles/exJsonSimple.json");
          // jp.parsePersonInfo("src/main/java/jsonFiles/exJsonPersonInfo.json");
         //jp.parsePeople("src/main/java/jsonFiles/exJsonPeople.json");
         //jp.parseJSONObjectWithArray("src/main/java/jsonFiles/exJsonWithArray.json");
+    }
+
+    public void jsonParserExample(String filePath) {
+        Gson gson = new Gson();
+        try {
+        String fileData = new String(Files.readAllBytes(Paths.get(filePath)));
+            JsonParser parser = new JsonParser();
+            JsonObject wholeJsonObject = (JsonObject) parser.parse(fileData);
+            JsonObject data = (JsonObject)wholeJsonObject.get("data");
+            JsonArray jsonArr = data.getAsJsonArray("people");
+            Iterator<JsonElement> it = jsonArr.iterator();
+            while (it.hasNext()) {
+                JsonObject personObj = (JsonObject)it.next();
+                Person p = gson.fromJson(personObj, Person.class);
+                System.out.println(p);
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     /** This method demonstrates how to parse a simple json file
