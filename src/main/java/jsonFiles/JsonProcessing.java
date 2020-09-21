@@ -30,11 +30,10 @@ public class JsonProcessing {
         String fileData = new String(Files.readAllBytes(Paths.get(filePath)));
             JsonParser parser = new JsonParser();
             JsonObject wholeJsonObject = (JsonObject) parser.parse(fileData);
-            JsonObject data = (JsonObject)wholeJsonObject.get("data");
-            JsonArray jsonArr = data.getAsJsonArray("people");
-            Iterator<JsonElement> it = jsonArr.iterator();
-            while (it.hasNext()) {
-                JsonObject personObj = (JsonObject)it.next();
+            JsonObject data = (JsonObject)wholeJsonObject.get("data"); // can use getAsJsonObject method
+            JsonArray jsonArr = (JsonArray)data.get("people"); //  to avoid downcasting, you can use getAsJsonArray method
+            for (JsonElement element : jsonArr) {
+                JsonObject personObj = (JsonObject)element;
                 Person p = gson.fromJson(personObj, Person.class);
                 System.out.println(p);
             }
