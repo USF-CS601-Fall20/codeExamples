@@ -3,10 +3,10 @@ package designPatterns.observer.weatherExample;
 import java.util.*;
 
 /** Observer Pattern Example. From Head First Design Patterns book.
- *  This class is the "subject", "Observable" that contains data. When something changes, it
+ *  This class is the "subject", "Observable" that contains data (measured using sensors). When something changes, it
  *  will notify its "Observers". */
 public class WeatherData implements Subject {
-	private ArrayList<Observer> observers;
+	private List<Observer> observers;
 	private float temperature;
 	private float humidity;
 	private float pressure;
