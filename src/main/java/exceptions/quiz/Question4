@@ -1,0 +1,10 @@
+Question 4:
+What types of exceptions need to be either?
+- caught in the try/catch block, or
+- listed in the throws clause of the method header for the code to compile?
+
+A. Unchecked exceptions such as ArrayIndexOutOfBoundsException.
+B. Checked exceptions such as input/output exceptions.
+C. Bugs.
+D. Neither.
+E. All exceptions
