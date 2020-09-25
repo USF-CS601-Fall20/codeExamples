@@ -1,4 +1,6 @@
-package designPatterns.factory.pizzaFactoryMethod;
+package designPatterns.factory.pizzaFactoryMethod.poorAlternative;
+
+import designPatterns.factory.pizzaFactoryMethod.*;
 
 public class DependentPizzaStore {
  
