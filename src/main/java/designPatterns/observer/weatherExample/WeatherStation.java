@@ -19,7 +19,8 @@ public class WeatherStation {
 		// all observers, and they will print info to the console
 		weatherData.setMeasurements(80, 65, 30.4f);
 		System.out.println();
-		weatherData.removeObserver(forecastDisplay); // removed one observer
+
+		//weatherData.removeObserver(forecastDisplay); // removed one observer
 
 		weatherData.setMeasurements(82, 70, 29.2f);
 		System.out.println();
