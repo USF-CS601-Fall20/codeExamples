@@ -30,4 +30,20 @@ public class Student {
     public String toString() {
         return name  + ", " + id + ", " + GPA;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this)
+            return true;
+        Student o = (Student)obj;
+        if (this.name == o.name && this.GPA == o.GPA && this.id == o.id)
+            return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (33*33*id + 33*name.hashCode() + GPA);
+    }
 }

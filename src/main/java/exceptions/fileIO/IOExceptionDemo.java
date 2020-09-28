@@ -8,22 +8,30 @@ import java.nio.file.Paths;
 
 public class IOExceptionDemo {
 
-    public static void main(String[] args) {
-        readFromFile(Paths.get("fileThatDoesNotExist.txt"));
+    public static void main(String[] args)    {
+       try {
+            readFromFile(Paths.get("fileThatDoesNotExist.txt"));
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
-    public static void readFromFile(Path path) {
+    public static void readFromFile(Path path)  throws IOException {
         BufferedReader reader = null;
-        try {
-            // int a = 5 / 0; // Uncomment it and see what happens
+       // try {
+            //int a = 5 / 0; // Uncomment it and see what happens
             reader = Files.newBufferedReader(path, Charset.forName("UTF-8"));
             String line = null;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-        }
+      /*  }
         catch(IOException e) {
             System.out.println(e);
+        }
+        catch(Exception e) {
+            System.out.println("Some general exception occurred." + e);
         }
         finally {
             System.out.println("In finally block");
@@ -36,7 +44,7 @@ public class IOExceptionDemo {
             catch(IOException e) {
                 System.out.println("Cannot close the reader");
             }
-        }
+        }*/
         System.out.println("After the finally block");
     }
 }

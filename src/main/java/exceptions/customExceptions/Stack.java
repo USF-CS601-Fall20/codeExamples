@@ -29,5 +29,6 @@ public class Stack {
     public static void main(String[] args) {
         Stack s1 = new Stack();
         s1.pop();
+
     }
 }

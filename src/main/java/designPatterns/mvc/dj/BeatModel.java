@@ -89,15 +89,12 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 	// not important for this example
 
     public void meta(MetaMessage message) {
-		sequencer.setMicrosecondPosition(0);    
-
-    		if (message.getType() == 47) {
+		sequencer.setMicrosecondPosition(0);
+		if (message.getType() == 47) {
 			beatEvent();
         	sequencer.start();
         	setBPM(getBPM());
-        } 
-    		//sequencer.setMicrosecondPosition(0);    
-
+        }
     }
 
 	public void setUpMidi() {

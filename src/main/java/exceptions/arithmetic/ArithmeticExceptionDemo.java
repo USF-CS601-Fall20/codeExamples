@@ -1,5 +1,7 @@
 package exceptions.arithmetic;
 
+import java.io.IOException;
+
 public class ArithmeticExceptionDemo {
     public static void main(String[] args) {
         doSomething();
@@ -12,10 +14,9 @@ public class ArithmeticExceptionDemo {
             int c = a / b;
             System.out.println(c);
         }
-        catch (ArithmeticException e) {
+        catch (Exception e) {
             System.out.println("Cannot divide by 0.");
         }
-
         finally {
             System.out.println("This will be executed regardless of whether exception occurs or not.");
         }

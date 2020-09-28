@@ -2,10 +2,13 @@ package exceptions.arithmetic;
 
 public class SimpleUnhandledException {
     public static void main(String[] args) {
-        test();
+        test1();
     }
 
-    public static void test() {
+    public static void test1() {
+        test2();
+    }
+    public static void test2() {
         int a = 5 / 0;
     }
 }

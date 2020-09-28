@@ -27,7 +27,7 @@ public class JsonProcessing {
     public void jsonParserExample(String filePath) {
         Gson gson = new Gson();
         try {
-        String fileData = new String(Files.readAllBytes(Paths.get(filePath)));
+            String fileData = new String(Files.readAllBytes(Paths.get(filePath)));
             JsonParser parser = new JsonParser();
             JsonObject wholeJsonObject = (JsonObject) parser.parse(fileData);
             JsonObject data = (JsonObject)wholeJsonObject.get("data"); // can use getAsJsonObject method

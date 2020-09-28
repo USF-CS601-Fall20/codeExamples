@@ -11,11 +11,12 @@ public class PrintTaskExample {
 		t1.start();
 		t2.start();
 
-		System.out.print(" Done ");
+		//System.out.print(" Done ");
 		// main thread will wait for t1 and t2 to finish before printing Done
-			//t1.join();
-			//t2.join();
-		   //System.out.print(" Done "); // Done will be printed in the end if we use join()
+		t1.join();
+		t2.join();
+
+		System.out.print(" Done "); // Done will be printed in the end if we use join()
 
 
 	}

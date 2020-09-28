@@ -11,7 +11,7 @@ public class IOExceptionDemoTryWithResources {
 
         // readFromFile(Paths.get("fileThatDoesNotExist.txt"));
 
-        readAndPrint("src/main/java/exceptions/example2/inputFile", "src/main/java/exceptions/example2/outputFile");
+        readAndPrint("src/main/java/exceptions/fileIO/inputFile", "src/main/java/exceptions/fileIO/outputFile");
     }
 
     public static void readFromFile(Path path) {

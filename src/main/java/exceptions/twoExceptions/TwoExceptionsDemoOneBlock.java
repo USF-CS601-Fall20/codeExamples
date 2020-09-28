@@ -26,7 +26,7 @@ public class TwoExceptionsDemoOneBlock {
                 System.out.println(line);
             }
         }
-        catch(IOException  | ArithmeticException e) {
+        catch(ArithmeticException | IOException  e) {
             System.out.println("IO exception");
         }
 
