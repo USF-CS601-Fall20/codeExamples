@@ -72,9 +72,9 @@ public class SolvingForMax {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix[row].length; col++) {
                 matrix[row][col] = Math.random();
-                //System.out.print(matrix[row][col] + "\t");
+                // System.out.print(matrix[row][col] + "\t");
             }
-            //System.out.println();
+            // System.out.println();
 
         }
         return matrix;
