@@ -24,8 +24,8 @@ public class CalculatePrimes extends Thread {
 			}
 
 			boolean prime = true;
-			for (int j = 0; j < count; j++) {
-				if (i % primes[j] == 0) {
+			for (int j = 2; j < i; j++) {
+				if (i % j == 0) {
 					prime = false;
 					break;
 				}
