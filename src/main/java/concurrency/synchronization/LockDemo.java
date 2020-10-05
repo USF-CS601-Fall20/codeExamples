@@ -35,14 +35,14 @@ public class LockDemo {
 		// TT FF TT FF
 		// Both workers 1 and 2 of this instance of LockDemo get the same lock
 		// So workers need to compete for the lock
-		//worker1 = new Worker(outerLock);
-		//worker2 = new Worker(outerLock);
+		worker1 = new Worker(outerLock);
+		worker2 = new Worker(outerLock);
 		
 		// TT FF TT FF
 		// Same case as before. Workers 1 and 2 of this instance of LockDemo
 		// compete for one lock, "this"
-		worker1 = new Worker(this);
-		worker2 = new Worker(this);
+		//worker1 = new Worker(this);
+		//worker2 = new Worker(this);
 
 		// TF TF TF TF
 		// There is only one lock for all workers for all instances of LockDemo

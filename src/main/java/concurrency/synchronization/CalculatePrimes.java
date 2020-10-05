@@ -8,10 +8,14 @@ package concurrency.synchronization;
 public class CalculatePrimes extends Thread {
 
 	public static final int MAX_PRIMES = 1000000;
-	public static final int TEN_SECONDS = 10000;
+	public static final int TEN_SECONDS = 50; //10000;
 
 	public volatile boolean finished = false;
+	//public volatile int finished1 = 1;
+	//public volatile int finished2 = 3;
 
+
+	@Override
 	public void run() {
 		int[] primes = new int[MAX_PRIMES];
 		int count = 0;
@@ -22,6 +26,9 @@ public class CalculatePrimes extends Thread {
 			if (finished) {
 				break;
 			}
+
+			//if (finished1 == finished2)
+			//	break;
 
 			boolean prime = true;
 			for (int j = 2; j < i; j++) {
@@ -42,12 +49,19 @@ public class CalculatePrimes extends Thread {
 		CalculatePrimes calculator = new CalculatePrimes();
 		calculator.start();
 
+		CalculatePrimes calculator1 = new CalculatePrimes();
+		calculator1.start();
+
 		try {
+			//System.out.println(Thread.currentThread().getName());
 			Thread.sleep(TEN_SECONDS);
 		} catch (InterruptedException e) {
 			System.out.println("The thread was interrupted.");
 		}
 
 		calculator.finished = true;
+		//calculator.finished1++;
+		// some delay
+		//calculator.finished1 = calculator.finished2;
 	}
 }

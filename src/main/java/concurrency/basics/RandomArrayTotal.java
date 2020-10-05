@@ -1,4 +1,4 @@
-package concurrency.synchronization;
+package concurrency.basics;
 
 /** The example is courtesy of Prof. Engle */
 
