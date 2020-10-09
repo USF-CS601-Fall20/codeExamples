@@ -47,7 +47,6 @@ public class FoodDelivery {
         customerOther.start();
         deliveryGuy.start();
 
-
     }
 
 

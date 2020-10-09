@@ -10,9 +10,9 @@ public class BlockingQueueExample {
 
 	/** Consumer thread removes elements from the queue */
 	public static class Consumer implements Runnable {
-		private BlockingQueue queue;
+		private BlockingQueueSolution queue;
 
-		Consumer(BlockingQueue q) {
+		Consumer(BlockingQueueSolution q) {
 			queue = q;
 		}
 
@@ -31,10 +31,10 @@ public class BlockingQueueExample {
 
 	/** Producer thread adds elements to the queue */
 	public static class Producer implements Runnable {
-		private BlockingQueue queue;
+		private BlockingQueueSolution queue;
 		private Random r;
 
-		Producer(BlockingQueue q) {
+		Producer(BlockingQueueSolution q) {
 			queue = q;
 			r = new Random();
 		}
@@ -54,7 +54,7 @@ public class BlockingQueueExample {
 	}
 
 	public static void main(String[] args) {
-		BlockingQueue q = new BlockingQueue(5);
+		BlockingQueueSolution q = new BlockingQueueSolution(5);
 		Thread thread1 = new Thread(new Consumer(q), "Consumer");
 		Thread thread2 = new Thread(new Producer(q), "Producer");
 

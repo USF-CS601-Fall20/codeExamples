@@ -18,6 +18,7 @@ public class MultiReaderLock {
             }
         }
         readers++;
+
     }
 
     public synchronized void unlockRead() {
@@ -26,15 +27,26 @@ public class MultiReaderLock {
         readers--;
         if (readers == 0)
             this.notifyAll();
-
     }
 
     public synchronized void lockWrite() {
-        // FILL IN CODE
+        while (readers > 0 || writers > 0) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+        writers++;
+
     }
 
     public synchronized void unlockWrite() {
-        // FILL IN CODE
+        if (writers == 0)
+            return;
+        writers--;
+        this.notifyAll();
+
     }
 
 }

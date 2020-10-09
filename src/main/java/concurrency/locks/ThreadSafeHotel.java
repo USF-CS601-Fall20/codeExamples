@@ -1,14 +1,25 @@
 package concurrency.locks;
 
 public class ThreadSafeHotel extends Hotel {
+    private MultiReaderLock lock;
+
     public ThreadSafeHotel(String name, String id, Address address) {
         super(name, id, address);
+        lock  = new MultiReaderLock();
     }
 
     @Override
     public String getId() {
+        String id = "";
+        try {
+            lock.lockRead();
 
-        return "";
+            id = super.getId();
+        }
+        finally{
+           lock.unlockRead();
+           return id;
+        }
     }
 
     @Override
@@ -24,7 +35,13 @@ public class ThreadSafeHotel extends Hotel {
 
     @Override
     public void setId(String id) {
-
+        try {
+            lock.lockWrite();
+            super.setId(id);
+        }
+        finally {
+            lock.unlockWrite();
+        }
 
     }
 
@@ -33,4 +50,5 @@ public class ThreadSafeHotel extends Hotel {
 
         return "";
     }
+
 }

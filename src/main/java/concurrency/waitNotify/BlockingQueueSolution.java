@@ -6,11 +6,11 @@ import java.util.List;
 /** BlockingQueue example - demonstrates the use of wait() and notify().
  * From http://tutorials.jenkov.com/java-concurrency/blocking-queues.html
  */
-public class BlockingQueue {
+public class BlockingQueueSolution {
 	private List<Integer> queue = new LinkedList<>();
 	private int capacity;
 
-	public BlockingQueue(int capacity) {
+	public BlockingQueueSolution(int capacity) {
 		this.capacity = capacity;
 	}
 
@@ -21,9 +21,13 @@ public class BlockingQueue {
 	 */
 	public synchronized void enqueue(Integer element) throws InterruptedException {
 		while (queue.size() == capacity) {
+			System.out.println(Thread.currentThread().getName() + " is waiting...");
 			this.wait();
 		}
 		queue.add(element);
+		System.out.println("Inserting " + element); //should be using Logger instead
+
+		//System.out.println(Thread.currentThread().getName() + " is notifying all...");
 		this.notifyAll();
 	}
 
@@ -33,13 +37,18 @@ public class BlockingQueue {
 	 * @throws InterruptedException
 	 */
 	public synchronized Integer dequeue() throws InterruptedException {
+		while (queue.isEmpty()) {
+            System.out.println(Thread.currentThread().getName() + " is waiting...");
+            this.wait();
 
-		while (queue.size() == 0) {
-			this.wait();
 		}
-		int elem = queue.remove(0);
-		this.notifyAll();
 
-		return elem;
+		Integer item = queue.remove(0);
+		System.out.println("Removing " + item); // should be using Logger instead
+
+		//System.out.println(Thread.currentThread().getName() + " is notifying all...");
+
+		this.notifyAll();
+		return item;
 	}
 }
