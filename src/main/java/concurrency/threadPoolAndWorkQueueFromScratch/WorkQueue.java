@@ -1,6 +1,7 @@
 package concurrency.threadPoolAndWorkQueueFromScratch;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class WorkQueue {
 	
@@ -39,7 +40,7 @@ public class WorkQueue {
 		if (running) {
 			// If running flag is true, we are welcome new jobs.
 			synchronized(queue) {
-	            queue.addLast(r);
+				queue.addLast(r);
 	            queue.notify();
 	        }
 		}

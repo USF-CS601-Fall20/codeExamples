@@ -27,7 +27,7 @@ public class MultithreadedJsonFileCounter {
         count++;
     }
 
-    public synchronized void incrementCount(int dirCount) {
+    public synchronized void combineCounts(int dirCount) {
         count += dirCount;
     }
 
@@ -45,11 +45,11 @@ public class MultithreadedJsonFileCounter {
         return pendingTasks;
     }
 
-    private class Worker implements Runnable {
+    private class FileWorker implements Runnable {
         Path dir;
-        int dirCount = 0;
+        int localCount = 0;
 
-        Worker(Path dir) {
+        FileWorker(Path dir) {
             this.dir = dir;
         }
 
@@ -62,7 +62,7 @@ public class MultithreadedJsonFileCounter {
                     if (Files.isDirectory(path)) {
                         //System.out.println(Thread.currentThread().getName() + "  assigned directory " + path);
                         logger.debug(Thread.currentThread().getName() + "  assigned directory " + path);
-                        Worker worker = new Worker(path);
+                        FileWorker worker = new FileWorker(path);
                         incrementTasks();
                         //logger.debug("Incrementing one task");
                         queue.execute(worker); // give this runnable to the queue
@@ -70,11 +70,11 @@ public class MultithreadedJsonFileCounter {
                     else {
                         if (path.toString().endsWith(".json")) { // if a .json file, count it
                             System.out.println(path);
-                            dirCount++; // efficient, since we update our local variable
+                            localCount++; // efficient, since we update our local variable
                         }
                     }
                 }
-                incrementCount(dirCount); // combine our local count with the total count.
+                combineCounts(localCount); // combine our local count with the total count.
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -89,7 +89,7 @@ public class MultithreadedJsonFileCounter {
     public void countFiles(Path directory) {
         if (!Files.isDirectory(directory))
             return;
-        Worker worker = new Worker(directory);
+        FileWorker worker = new FileWorker(directory);
         incrementTasks();
         logger.debug("Incrementing one task");
         queue.execute(worker);
