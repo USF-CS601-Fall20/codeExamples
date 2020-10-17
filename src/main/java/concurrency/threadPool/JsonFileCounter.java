@@ -28,7 +28,7 @@ public class JsonFileCounter {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 
@@ -38,7 +38,7 @@ public class JsonFileCounter {
 
     public static void main(String[] args) {
         JsonFileCounter fileCounter = new JsonFileCounter();
-        fileCounter.countFiles(Paths.get("input/smallReviewsSet"));
+        fileCounter.countFiles(Paths.get("input/reviews"));
         System.out.println(fileCounter.getCount());
 
     }

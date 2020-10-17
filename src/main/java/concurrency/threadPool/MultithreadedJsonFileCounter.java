@@ -2,96 +2,100 @@ package concurrency.threadPool;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Phaser;
+import java.util.concurrent.TimeUnit;
 
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Phaser;
-import java.util.concurrent.TimeUnit;
 
 public class MultithreadedJsonFileCounter {
-    private ExecutorService exec = null;
     private int count;
+    private ExecutorService executor;
+    private Logger logger = LogManager.getLogger();
     private Phaser phaser;
-    private static final Logger logger = LogManager.getLogger();
 
-
-    public MultithreadedJsonFileCounter() {
-        logger.debug("In the constructor");
+    public MultithreadedJsonFileCounter(){
         count = 0;
-        exec = Executors.newCachedThreadPool();
+        executor = Executors.newFixedThreadPool(5);
         phaser = new Phaser();
+    }
+
+    private class DirectoryWorker implements Runnable {
+        Path dir;
+        int localCount = 0;
+        DirectoryWorker(Path dir) {
+            this.dir = dir;
+        }
+
+        @Override
+        public void run() {
+            if (!Files.isDirectory(dir)) {
+                return;
+            }
+            try (DirectoryStream<Path> filesAndFolders = Files.newDirectoryStream(dir)) {
+                for (Path path: filesAndFolders) {
+                    if (Files.isDirectory(path)) {
+                        DirectoryWorker worker =  new DirectoryWorker(path);
+                        logger.debug("Created a worker for " + path);
+                        phaser.register();
+                        executor.submit(worker);
+                    }
+                    else {
+                        if (path.toString().endsWith(".json")) {
+                            System.out.println(path);
+                            localCount++;
+                            //incrementCount();
+                        }
+                    }
+                }
+                combineCounts(localCount);
+                logger.debug("Worker is done processing " + dir + "  current count = " + getCount());
+
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+            finally {
+                phaser.arrive();
+            }
+
+        }
     }
 
     public synchronized void incrementCount() {
         count++;
     }
 
-    public synchronized void incrementCount(int dirCount) {
-        count += dirCount;
-    }
-
-    private class Worker implements Runnable {
-        Path dir;
-        int dirCount = 0;
-
-        Worker(Path dir) {
-            this.dir = dir;
-        }
-
-        @Override
-        public void run() {
-            if (!Files.isDirectory(dir))
-                return;
-            try (DirectoryStream<Path> filesAndFolders = Files.newDirectoryStream(dir)) {
-                for (Path path: filesAndFolders) {
-                    if (Files.isDirectory(path)) {
-                        //System.out.println(Thread.currentThread().getName() + "  assigned directory " + path);
-                        logger.debug(Thread.currentThread().getName() + "  assigned directory " + path);
-                        Worker worker = new Worker(path);
-                        phaser.register();
-                        exec.submit(worker);
-                    }
-                    else {
-                        if (path.toString().endsWith(".json")) {
-                            System.out.println(path);
-                            dirCount++;
-                            // incrementCount();
-                        }
-                    }
-                }
-                incrementCount(dirCount);
-                phaser.arrive();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public synchronized void combineCounts(int localCount) {
+        count += localCount;
     }
 
     public void countFiles(Path directory) {
-        if (!Files.isDirectory(directory))
-            return;
-        int phase = phaser.getPhase();
-        Worker worker = new Worker(directory);
-        phaser.register();
-        exec.submit(worker);
-        phaser.awaitAdvance(phase);
-        System.out.println(getCount());
-        shutdownExecutorService();
+       DirectoryWorker worker = new DirectoryWorker(directory);
+       logger.debug("Created a worker for " + directory);
+       phaser.register();
+       executor.submit(worker);
+
+       int phase = phaser.getPhase();
+       phaser.awaitAdvance(phase);
+       System.out.println(getCount());
+
+       shutdownExecutor();
     }
 
     public synchronized int getCount() {
+        logger.debug("Great! We have a result: " + count);
         return count;
     }
 
-    public void shutdownExecutorService() {
-        exec.shutdown();
+    public void shutdownExecutor() {
+        executor.shutdown();
         try {
-            exec.awaitTermination(10000, TimeUnit.SECONDS);
+            executor.awaitTermination(2, TimeUnit.SECONDS);
         }
         catch (InterruptedException e) {
             System.out.println(e);
@@ -101,7 +105,7 @@ public class MultithreadedJsonFileCounter {
     public static void main(String[] args) {
         MultithreadedJsonFileCounter fileCounter = new MultithreadedJsonFileCounter();
         fileCounter.countFiles(Paths.get("input/reviews"));
-
-
+        // System.out.println(fileCounter.getCount());
     }
+
 }
