@@ -35,7 +35,7 @@ public class InputValidationExample {
 
 	// validate address
 	public static boolean validateAddress(String address) {
-		return address.matches("\\d+\\s+([a-zA-Z]+(\\s[a-zA-Z]+)*)");
+		return address.matches("\\d+\\s+((\\d+\\s)*[a-zA-Z]+(\\s[a-zA-Z]+)*)");
 	} // end method validateAddress
 
 	// validate city
@@ -52,4 +52,5 @@ public class InputValidationExample {
 	public static boolean validatePhone(String phone) {
 		return phone.matches("[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}");
 	} // end method validatePhone
+
 } // end class ValidateInput
