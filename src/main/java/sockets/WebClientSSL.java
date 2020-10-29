@@ -12,7 +12,7 @@ import javax.net.ssl.SSLSocketFactory;
 
 /**
  * Shows how to write a WebClient that can send a GET request to googleapis.com
- * (Geocode API ) that uses https. Modified from the example at:
+ * that uses https. Modified from the example at:
  * http://www.jguru.com/faq/view.jsp?EID=32388
  */
 public class WebClientSSL {
@@ -31,7 +31,10 @@ public class WebClientSSL {
 
 
         String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:9787508318134";
-        //String urlString = https://maps.googleapis.com/maps/api/geocode/json?address=University%20of%20San%20Francisco,%20US";// &sensor=false";
+
+        //String urlString = "https://maps.googleapis.com/maps/api/geocode/json?address=University%20of%20San%20Francisco,%20US";
+        // To get this one to work, you need to append and API key.
+
         PrintWriter out = null;
         BufferedReader in = null;
         SSLSocket socket = null;
@@ -45,7 +48,7 @@ public class WebClientSSL {
 
             // output stream for the secure socket
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-            String request = getRequest(url.getHost(), url.getPath() ); //+ "?" + url.getQuery());
+            String request = getRequest(url.getHost(), url.getPath() + "?"+ url.getQuery());
             System.out.println("Request: " + request);
 
             out.println(request); // send a request to the server

@@ -73,11 +73,9 @@ public class HttpFetcher {
     public static void main(String[] args) {
 
         String res = HttpFetcher.fetch("example.com", "/");
-        //String res = HttpFetcher.fetch("www.baidu.com", "/s?wd=USFCA");
-        //String res = HttpFetcher.fetch("www.nyu.edu", "/academics.html");
+        // String res = HttpFetcher.fetch("www.baidu.com", "/s?wd=USFCA");
+        // String res = HttpFetcher.fetch("www.nyu.edu", "/academics.html");
 
-        //String res = HttpFetcher.fetch("docs.oracle.com", "/javase/8/docs/api/java/util/ArrayList.html");
-        // https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
         System.out.println(res);
 
     }
