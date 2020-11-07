@@ -1,4 +1,4 @@
-package cookies;
+package cookiesAndSessions;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,6 @@ import java.io.PrintWriter;
  * since cookie values are not sanitized prior to use!
  * Modified from the example of Prof. Engle
  * @see CookieBaseServlet
- * @see CookieIndexServlet
  * @see CookieConfigServlet
  */
 @SuppressWarnings("serial")

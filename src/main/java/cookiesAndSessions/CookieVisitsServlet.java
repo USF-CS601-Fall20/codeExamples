@@ -1,4 +1,4 @@
-package cookies;
+package cookiesAndSessions;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
