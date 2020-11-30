@@ -6,14 +6,10 @@ package refactoring;
  * Use IntelliJ to pull up getGreeting() from Alien class to Creature class
  */
 public class Creature {
-	private String greeting;
+	protected String greeting;
 
 	public Creature(String greeting) {
 		this.greeting = greeting;
-	}
-
-	public String getGreeting() {
-		return greeting;
 	}
 
 	public void speak() {

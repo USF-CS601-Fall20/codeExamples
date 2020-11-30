@@ -17,20 +17,22 @@ public class Alien extends Creature {
 			numAliensFromMars++;
 	}
 
-	// Use IntelliJ to pull up getGreeting() from Alien class to Creature class
-
-
 	public void speak() {
 
 		System.out.print("Alien from planet " + planet + " says: " +  getGreeting() + ". ");
 	}
-	
+
 	public void fight() {
 		// If this alien is from Mars and the total number of aliens from Mars is greater than 3, then 
 		// print "Let's fight!");
 		if ((planet.equals("Mars"))&&(numAliensFromMars >=3)) {
 			System.out.println("Let's fight!");
 		}
-		
+
+	}
+
+	// Use IntelliJ to pull up getGreeting() from Alien class to Creature class
+	public String getGreeting() {
+		return greeting;
 	}
 }
